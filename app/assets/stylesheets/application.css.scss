@@ -53,6 +53,7 @@ h1 {
   font-weight: 700;
   color: #4d4d4d;
   cursor: pointer;
+
   // width: 100%;
   // white-space: nowrap;
   // overflow-x: scroll;
@@ -107,6 +108,9 @@ h1 {
 .list-button.delete {
   background: red;
   color: #fff;
+  position: absolute;
+  transform: translateY(-8px);
+  right: 6px;
 }
 
 .list-items {
@@ -123,5 +127,8 @@ h1 {
 input {
   padding: 5px;
   border-radius: 5px;
+}
 
+.deletable {
+  position: relative;
 }
