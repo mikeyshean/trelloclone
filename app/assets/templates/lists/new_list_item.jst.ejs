@@ -4,7 +4,13 @@
     type="text"
     name="card[title]"
     placeholder="Add New Card"
-    class="form-input">
+    class="new-card-input">
+
+  <input
+    type="hidden"
+    name="card[ord]"
+    value=<%= list.cards().length + 1 %>>
+
 
     <button class="add list-button">+</button>
   </form>

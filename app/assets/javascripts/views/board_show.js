@@ -5,12 +5,13 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
 
   events: {
     "submit #new-list": "submitNewList",
-    "mouseenter .lists > li": "showAdd",
-    "mouseleave .lists > li": "hideAdd",
+    "mouseenter .deletable": "showAddCard",
+    "mouseleave .deletable": "hideAddCard",
     "submit #new-card-form": "submitNewCard",
-    "mouseenter .deletable": "showDelete",
-    "mouseleave .deletable": "hideDelete",
-    "click .deletable > .delete": "deleteList"
+    "mouseenter .deletable > p": "showDeleteList",
+    "mouseleave .deletable > p": "hideDeleteList",
+    "click p > .delete": "deleteList",
+    "click .load-player": "loadPlayer"
   },
 
   initialize: function () {
@@ -38,28 +39,47 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
     this.$el.html(this.template({ board: this.model }));
     this.attachSubviews()
     this.$("ul.lists").append(this.newList())
+    this.$(".list-form-input").focus()
     return this;
   },
 
-  showAdd: function (e) {
+  showAddCard: function (e) {
     e.preventDefault();
     var listId = $(e.currentTarget).find("p").data("id")
+    var list = this.model.lists().get(listId)
     var $ul = $(e.currentTarget).find(".list-items")
-    $ul.append(this.newListItem({ id: listId}))
+    $ul.append(this.newListItem({ id: listId, list: list }))
     $ul.find(".form-input").focus();
   },
 
-  hideAdd: function (e) {
+  hideAddCard: function (e) {
     e.preventDefault();
     var $ul = $(e.currentTarget).find("#new-card")
     $ul.remove();
+  },
+
+  showDeleteList: function (e) {
+    e.preventDefault();
+    var $p = $(e.currentTarget)
+    $p.prepend("<button class=\"delete list-button\" data-id=" + $p.data("id") + ">&#8212;</button>")
+  },
+
+  hideDeleteList: function (e) {
+    e.preventDefault();
+    var $p = $(e.currentTarget)
+    $p.find("button.delete").remove();
   },
 
   submitNewList: function (e) {
     e.preventDefault();
     var formData = $(e.currentTarget).serializeJSON();
     formData["list"]["board_id"] = this.model.id;
-    this.model.lists().create(formData, {wait: true});
+    this.model.lists().create(formData, {
+      error: function (model, response) {
+        response.responseJSON.forEach(alert)
+      },
+      wait: true
+    });
   },
 
   submitNewCard: function (e) {
@@ -68,24 +88,17 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
     var formData = $(e.currentTarget).serializeJSON();
     formData["card"]["list_id"] = listId
     var list = this.model.lists().get(listId)
-    list.cards().create(formData, {wait: true});
-  },
 
-  showDelete: function (e) {
-    e.preventDefault();
-    var $list = $(e.currentTarget)
-    $list.prepend("<button class=\"delete list-button\" data-id=" + $list.data("id") + ">X</button>")
-  },
-
-  hideDelete: function (e) {
-    e.preventDefault();
-    var $list = $(e.currentTarget)
-    $list.find("button.delete").remove();
+    list.cards().create(formData, {
+      error: function (model, response) {
+        response.responseJSON.forEach(alert)
+      },
+      wait: true
+    });
   },
 
   deleteList: function (e) {
     e.preventDefault();
-
     var listId = $(e.currentTarget).data("id");
     var list = this.model.lists().get(listId)
     list.destroy();

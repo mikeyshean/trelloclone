@@ -52,12 +52,6 @@ h1 {
   display: relative;
   font-weight: 700;
   color: #4d4d4d;
-  cursor: pointer;
-
-  // width: 100%;
-  // white-space: nowrap;
-  // overflow-x: scroll;
-  // list-style-type: none;
 }
 
 .lists > li {
@@ -69,6 +63,7 @@ h1 {
   border-radius: 10px;
   background: cornflowerblue;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .lists > li > p {
@@ -76,7 +71,7 @@ h1 {
   width: 100%;
   font-weight: 400;
   text-align: center;
-  padding: 5px 0px;
+  padding: 10px 0px;
   margin: 0;
   color: #fff;
 }
@@ -109,7 +104,7 @@ h1 {
   background: red;
   color: #fff;
   position: absolute;
-  transform: translateY(-8px);
+  top: 6px;
   right: 6px;
 }
 
@@ -118,7 +113,7 @@ h1 {
 }
 
 .list-items > li {
-  padding: 5px 5px;
+  padding: 10px 5px;
   font-size: 14px;
   border-top: 2px solid #337ab7;
   position: relative;
@@ -131,4 +126,12 @@ input {
 
 .deletable {
   position: relative;
+}
+
+.add-new-list {
+  padding: 3px 0px 3px 3px;
+}
+
+#new-card {
+  padding: 5px 5px;
 }
