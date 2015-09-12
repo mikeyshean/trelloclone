@@ -51,13 +51,18 @@ h1 {
 .lists {
   display: relative;
   font-weight: 700;
-  color: #4d4d4d
+  color: #4d4d4d;
+  cursor: pointer;
+  // width: 100%;
+  // white-space: nowrap;
+  // overflow-x: scroll;
+  // list-style-type: none;
 }
 
 .lists > li {
   float: left;
-  width: 100px;
-  margin: 0 20px;
+  width: 210px;
+  margin: 20px 20px;
   font-weight: 400;
   border: 5px solid #337ab7;
   border-radius: 10px;
@@ -68,10 +73,40 @@ h1 {
 .lists > li > p {
   display: block;
   width: 100%;
-  font-weight: 700;
+  font-weight: 400;
   text-align: center;
   padding: 5px 0px;
   margin: 0;
+  color: #fff;
+}
+
+.list-form {
+  position: relative;
+}
+
+.list-button {
+  padding: 5px 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 10px;
+  width: 24px;
+  float: right;
+  overflow: hidden;
+  position: absolute;
+  top: 10%;
+  right: 2px;
+}
+
+.list-button.add {
+  background: #fff;
+  color: #000;
+  font-size: 10px;
+}
+
+.list-button.delete {
+  background: red;
+  color: #fff;
 }
 
 .list-items {
@@ -81,20 +116,12 @@ h1 {
 .list-items > li {
   padding: 5px 5px;
   font-size: 14px;
-  cursor: pointer;
   border-top: 2px solid #337ab7;
   position: relative;
 }
 
-.list-items .delete {
-  padding: 5px 5px;
-  background: red;
-  cursor: pointer;
-  border-radius: 50%;
-  color: #fff;
-  font-weight: 700;
-  font-size: 10px;
-  width: 24px;
-  float: right;
-  overflow: hidden;
+input {
+  padding: 5px;
+  border-radius: 5px;
+
 }
