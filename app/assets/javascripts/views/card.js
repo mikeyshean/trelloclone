@@ -1,7 +1,7 @@
 TrelloClone.Views.Card = Backbone.View.extend({
   template: JST["boards/card"],
   tagName: "li",
-  className: "card deletable",
+  className: "card deletable group",
 
   render: function () {
     this.$el.html(this.template({ card: this.model }));

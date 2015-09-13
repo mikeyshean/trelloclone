@@ -13,11 +13,11 @@
  *= require_tree .
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "font-awesome";
+// @import "bootstrap-sprockets";
+// @import "bootstrap";
+// @import "font-awesome";
 
-html, body, div, h1, ul, li {
+html, body, div, h1, ul, li, button {
   border: 0;
   padding: 0;
   margin: 0;
@@ -28,7 +28,7 @@ html, body, div, h1, ul, li {
   color: inherit;
   box-sizing: inherit;
   background: transparent;
-  font-family: Roboto, sans-serif;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 .group:after {
@@ -37,25 +37,25 @@ html, body, div, h1, ul, li {
   clear: both;
 }
 
+body{
+  background: #0079BF
+}
+
 ul {
   list-style: none;
+  color: #4d4d4d
 }
 
 h1 {
   font-size: 24px;
   font-weight: 700;
   margin: 20px;
-  color: #4d4d4d
+  color: #fff;
 }
 
 .lists {
   font-weight: 700;
-  color: #4d4d4d;
   position: relative;
-}
-
-.lists-wrapper {
-  float: left;
 }
 
 .single-list {
@@ -63,28 +63,24 @@ h1 {
 }
 
 .single-list > ul {
-  width: 210px;
+  width: 250px;
   margin: 20px 20px;
   font-weight: 400;
-  border: 5px solid #337ab7;
-  border-radius: 10px;
-  background: cornflowerblue;
-  overflow: hidden;
+  border: 5px solid #E2E4E6;
+  border-radius: 3px;
+  background: #E2E4E6;
   cursor: pointer;
 }
 
 .single-list p {
-  display: block;
-  width: 100%;
-  font-weight: 400;
+  // display: block;
+  // width: 100%;
+  font-size: 16px;
+  font-weight: 700;
   text-align: center;
-  padding: 10px 0px;
-  margin: 0;
-  color: #fff;
-}
-
-.single_list {
-  display: inline-block;
+  padding: 5px 0px;
+  margin: 0 5px;
+  position: relative;
 }
 
 .list-form {
@@ -92,57 +88,52 @@ h1 {
 }
 
 .list-button {
-  padding: 5px 5px;
   cursor: pointer;
-  border-radius: 50%;
   font-weight: 700;
-  font-size: 10px;
-  width: 24px;
-  float: right;
-  overflow: hidden;
+  font-size: 18px;
+
   position: absolute;
-  top: 10%;
-  right: 2px;
+  top: 6px;
+  right: 4px;
 }
 
 .list-button.add {
-  background: #fff;
-  color: #000;
-  font-size: 10px;
-}
-
-.list-button.delete {
-  background: red;
-  color: #fff;
-  position: absolute;
-  top: 6px;
-  right: 6px;
-}
-
-.list-items {
-  background: #fff;
+  top: 3px;
+  right: 5px;
 }
 
 .list-items > .card {
   padding: 10px 5px;
+  margin: 5px;
   font-size: 14px;
-  border-top: 2px solid #337ab7;
+  border: 1px solid #E2E4E6;
   position: relative;
+  background: #fff;
+  border-radius: 5px;
 }
 
 input {
   padding: 5px;
   border-radius: 5px;
+  font-size: 14px;
 }
 
 .deletable {
   position: relative;
 }
 
-.add-new-list {
-  padding: 3px 0px 3px 3px;
+#new-card {
+  padding: 5px 0 5px 5px;
 }
 
-#new-card {
-  padding: 5px 5px;
+.new-card-input {
+  width: 180px;
+}
+
+.list-form-input {
+    width: 200px;
+}
+
+.card:hover {
+  background: #EDEFF0;
 }
