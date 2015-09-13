@@ -35,7 +35,6 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
     this.attachSubviews()
     this.$(".lists-wrapper").append(this.newList())
     this.$(".list-form-input").focus()
-    console.log("board");
     return this;
   },
 
@@ -51,6 +50,13 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
     $p.find("button.delete").remove();
   },
 
+  deleteList: function (e) {
+    e.preventDefault();
+    var listId = $(e.currentTarget).data("id");
+    var list = this.model.lists().get(listId)
+    list.destroy({ wait: true });
+  },
+
   submitNewList: function (e) {
     e.preventDefault();
     var formData = $(e.currentTarget).serializeJSON();
@@ -61,12 +67,5 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
       },
       wait: true
     });
-  },
-
-  deleteList: function (e) {
-    e.preventDefault();
-    var listId = $(e.currentTarget).data("id");
-    var list = this.model.lists().get(listId)
-    list.destroy({ wait: true });
   }
 })

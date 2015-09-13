@@ -21,6 +21,7 @@ html, body, div, h1, ul, li, button {
   border: 0;
   padding: 0;
   margin: 0;
+  outline: 0;
 
   text-decoration: inherit;
   text-align: inherit;
@@ -31,6 +32,15 @@ html, body, div, h1, ul, li, button {
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
+html, body, .backdrop, #main {
+  height: 100%;
+}
+
+input, input:active, input:focus, button:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
 .group:after {
   content: "";
   display: block;
@@ -39,6 +49,12 @@ html, body, div, h1, ul, li, button {
 
 body{
   background: #0079BF
+}
+
+body .board-index {
+  background: #fff;
+  height: 100%;
+
 }
 
 ul {
@@ -53,9 +69,20 @@ h1 {
   color: #fff;
 }
 
+.lists h4 {
+  margin: 0 0 0 20px;
+  position: relative;
+  top: 10px;
+}
+
 .lists {
   font-weight: 700;
   position: relative;
+  max-width: 1250px;
+}
+
+.board-list {
+  margin: 0 auto;
 }
 
 .single-list {
@@ -73,8 +100,6 @@ h1 {
 }
 
 .single-list p {
-  // display: block;
-  // width: 100%;
   font-size: 16px;
   font-weight: 700;
   text-align: center;
@@ -95,6 +120,10 @@ h1 {
   position: absolute;
   top: 6px;
   right: 4px;
+}
+
+p > .delete {
+  top: 3px;
 }
 
 .list-button.add {
@@ -137,3 +166,13 @@ input {
 .card:hover {
   background: #EDEFF0;
 }
+
+h4 .header-icon {
+  position: relative;
+  top: 7px;
+  margin: 0 5px 10px;
+}
+
+h4 .material-icons.md-24 { font-size: 28px; }
+h4 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+h4 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
