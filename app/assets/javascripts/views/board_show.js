@@ -1,17 +1,15 @@
 TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
   template: JST["boards/board_show"],
   newList: JST["boards/new_list"],
-  newListItem: JST["lists/new_list_item"],
+
+  deleteButton: JST["delete_button"],
 
   events: {
     "submit #new-list": "submitNewList",
-    "mouseenter .deletable": "showAddCard",
-    "mouseleave .deletable": "hideAddCard",
     "submit #new-card-form": "submitNewCard",
     "mouseenter .deletable > p": "showDeleteList",
     "mouseleave .deletable > p": "hideDeleteList",
-    "click p > .delete": "deleteList",
-    "click .load-player": "loadPlayer"
+    "click p > .delete": "deleteList"
   },
 
   initialize: function () {
@@ -27,41 +25,26 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
 
   addListSubview: function (list) {
     var view = new TrelloClone.Views.List({ model: list })
-    this.addSubview(".lists", view);
+    this.addSubview(".lists-wrapper", view);
   },
 
   removeListSubview: function (list) {
-    this.removeModelSubview(".lists", list);
+    this.removeModelSubview(".lists-wrapper", list);
     this.render();
   },
 
   render: function () {
     this.$el.html(this.template({ board: this.model }));
     this.attachSubviews()
-    this.$("ul.lists").append(this.newList())
+    this.$(".lists-wrapper").append(this.newList())
     this.$(".list-form-input").focus()
     return this;
-  },
-
-  showAddCard: function (e) {
-    e.preventDefault();
-    var listId = $(e.currentTarget).find("p").data("id")
-    var list = this.model.lists().get(listId)
-    var $ul = $(e.currentTarget).find(".list-items")
-    $ul.append(this.newListItem({ id: listId, list: list }))
-    $ul.find(".form-input").focus();
-  },
-
-  hideAddCard: function (e) {
-    e.preventDefault();
-    var $ul = $(e.currentTarget).find("#new-card")
-    $ul.remove();
   },
 
   showDeleteList: function (e) {
     e.preventDefault();
     var $p = $(e.currentTarget)
-    $p.prepend("<button class=\"delete list-button\" data-id=" + $p.data("id") + ">&#8212;</button>")
+    $p.prepend(this.deleteButton({ $el: $p }))
   },
 
   hideDeleteList: function (e) {

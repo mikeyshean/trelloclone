@@ -49,13 +49,20 @@ h1 {
 }
 
 .lists {
-  display: relative;
   font-weight: 700;
   color: #4d4d4d;
+  position: relative;
 }
 
-.lists > li {
+.lists-wrapper {
   float: left;
+}
+
+.single-list {
+  float: left
+}
+
+.single-list > ul {
   width: 210px;
   margin: 20px 20px;
   font-weight: 400;
@@ -66,7 +73,7 @@ h1 {
   cursor: pointer;
 }
 
-.lists > li > p {
+.single-list p {
   display: block;
   width: 100%;
   font-weight: 400;
@@ -74,6 +81,10 @@ h1 {
   padding: 10px 0px;
   margin: 0;
   color: #fff;
+}
+
+.single_list {
+  display: inline-block;
 }
 
 .list-form {
@@ -112,7 +123,7 @@ h1 {
   background: #fff;
 }
 
-.list-items > li {
+.list-items > .card {
   padding: 10px 5px;
   font-size: 14px;
   border-top: 2px solid #337ab7;
