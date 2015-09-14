@@ -11,8 +11,6 @@
  *= require_self
  *= require jquery-ui
  *= require_tree .
- *= require jquery-ui
-
  */
 
 
@@ -31,8 +29,9 @@ html, body, div, h1, ul, li, button {
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-html, body, .backdrop, #main {
+html, body, .backdrop, #main, .board-show, .lists-wrapper {
   height: 100%;
+  width: 100%;
 }
 
 input, input:active, input:focus, button:focus {
@@ -47,11 +46,20 @@ input, input:active, input:focus, button:focus {
 }
 
 .backdrop {
-  margin-top: 40px;
+  position: relative;
+  top: 40px;
+}
+
+#main:before {
+  content: "";
+  display: block;
+  height: 1px;
 }
 
 body {
-  background: #0079BF
+  background: #0079BF;
+  overflow-y: hidden;
+    overflow-x: scroll;
 }
 
 nav {
@@ -78,7 +86,8 @@ ul {
 h1 {
   font-size: 24px;
   font-weight: 700;
-  margin: 20px;
+  font-size: 18px;
+  margin: 10px 20px;
   color: #fff;
 }
 
@@ -119,14 +128,13 @@ nav .nav-accent-blue {
 
 .lists h4 {
   margin: 0 0 0 20px;
-  position: relative;
-  top: 10px;
 }
 
 .lists {
   font-weight: 700;
-  position: relative;
-  max-width: 1250px;
+  width: auto;
+  height: 100%;
+
 }
 
 .board-list {
@@ -134,12 +142,14 @@ nav .nav-accent-blue {
 }
 
 .single-list {
-  float: left
+  display: inline-block;
+  white-space: normal;
+  vertical-align: top;
 }
 
 .single-list > ul {
   width: 250px;
-  margin: 20px 20px;
+  margin: 0 5px;
   font-weight: 400;
   border: 5px solid #E2E4E6;
   border-radius: 3px;
@@ -170,6 +180,10 @@ nav .nav-accent-blue {
   right: 4px;
 }
 
+.list-button:hover {
+  color: #aaa;
+}
+
 p > .delete {
   top: 3px;
 }
@@ -180,13 +194,23 @@ p > .delete {
 }
 
 .list-items > .card {
-  padding: 10px 5px;
+  padding: 10px 30px 10px 5px;
   margin: 5px;
   font-size: 14px;
   border: 1px solid #E2E4E6;
   position: relative;
   background: #fff;
   border-radius: 5px;
+  box-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+  height: auto;
+  word-wrap: break-word;
+  overflow: auto;
+  min-height: 16px;
+}
+
+.list-items > .card:hover {
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 input {
@@ -214,6 +238,9 @@ input {
 .card:hover {
   background: #EDEFF0;
 }
+.card.deletable:hover {
+  cursor: -webkit-grab;
+}
 
 h4 .header-icon {
   position: relative;
@@ -221,9 +248,19 @@ h4 .header-icon {
   margin: 0 5px 10px;
 }
 
-.board-show {
-  position: relative;
-  top: 20px;
+.lists-wrapper {
+  white-space: nowrap;
+  width: auto;
+  position: absolute;
+}
+
+.list-items > .card.ui-sortable-helper {
+  cursor: -webkit-grabbing;
+}
+
+.list-items > .ui-sortable-placeholder {
+  border: 2px dashed #fff;
+  background: #ccc;
 }
 
 h4 .material-icons.md-24 { font-size: 28px; }

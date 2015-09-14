@@ -12,7 +12,6 @@ gem 'rails', '4.2.0'
 gem 'sass-rails', '~> 4.0.0'
 gem 'pg'
 gem 'uglifier', '>= 1.3.0'
-gem "jquery-ui-rails"
 
 group :doc do
   gem 'sdoc', require: false
