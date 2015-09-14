@@ -13,8 +13,9 @@ TrelloClone.Views.List = Backbone.CompositeView.extend({
     "submit #new-card-form": "submitNewCard",
   },
 
-  initialize: function () {
+  initialize: function (options) {
     this.toggle = false;
+    this.boardView = options.boardView
     this.listenTo(this.model.cards(), "add", this.addCardSubview)
     this.listenTo(this.model.cards(), "remove", this.removeCardSubview)
     this.listenTo(this.model.cards(), "add", this.render);
@@ -27,7 +28,6 @@ TrelloClone.Views.List = Backbone.CompositeView.extend({
   render: function () {
     this.$el.html(this.template({ list: this.model }))
     this.attachSubviews();
-    this.$el.attr("data-id", this.model.id)
     console.log("list");
     return this;
   },
@@ -83,6 +83,9 @@ TrelloClone.Views.List = Backbone.CompositeView.extend({
     formData["card"]["list_id"] = this.model.id
 
     this.model.cards().create(formData, {
+      success: function () {
+        this.model.trigger("resort")
+      }.bind(this),
       error: function (model, response) {
         response.responseJSON.forEach(alert)
       },
