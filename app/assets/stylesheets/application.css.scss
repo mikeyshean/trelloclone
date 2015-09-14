@@ -11,11 +11,10 @@
  *= require_self
  *= require jquery-ui
  *= require_tree .
+ *= require jquery-ui
+
  */
 
-// @import "bootstrap-sprockets";
-// @import "bootstrap";
-// @import "font-awesome";
 
 html, body, div, h1, ul, li, button {
   border: 0;
@@ -47,8 +46,22 @@ input, input:active, input:focus, button:focus {
   clear: both;
 }
 
-body{
+.backdrop {
+  margin-top: 40px;
+}
+
+body {
   background: #0079BF
+}
+
+nav {
+  height: 40px;
+  color: #f3f3f3;
+  font-weight: 700;
+  background: #026aa7;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
 body .board-index {
@@ -59,7 +72,7 @@ body .board-index {
 
 ul {
   list-style: none;
-  color: #4d4d4d
+  color: #4d4d4d;
 }
 
 h1 {
@@ -67,6 +80,41 @@ h1 {
   font-weight: 700;
   margin: 20px;
   color: #fff;
+}
+
+nav .nav-accent-blue {
+  background: rgba(255,255,255,.3);
+}
+
+.nav-bar-boards {
+  display: block;
+  color: #f3f3f3;
+  text-decoration: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin-top: auto;
+}
+
+.navbar-left {
+  float: left;
+  position: relative;
+  top: 4px;
+  left: 5px;
+}
+
+.board-icon {
+  position: absolute;
+  bottom: 2px;
+  left: 7px;
+}
+
+.board-icon-text {
+  margin-left: 25px;
+}
+
+.navbar-right {
+  float: right;
+
 }
 
 .lists h4 {
@@ -171,6 +219,11 @@ h4 .header-icon {
   position: relative;
   top: 7px;
   margin: 0 5px 10px;
+}
+
+.board-show {
+  position: relative;
+  top: 20px;
 }
 
 h4 .material-icons.md-24 { font-size: 28px; }

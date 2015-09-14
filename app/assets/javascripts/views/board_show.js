@@ -2,7 +2,8 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
   template: JST["boards/board_show"],
   newList: JST["boards/new_list"],
   deleteButton: JST["delete_button"],
-
+  className: "board-show",
+  
   events: {
     "submit #new-list": "submitNewList",
     "mouseenter .deletable > p": "showDeleteList",

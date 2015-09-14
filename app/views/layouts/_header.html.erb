@@ -1,24 +1,11 @@
-<nav class="navbar navbar-default" role="navigation">
-<div class="container container-fluid">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">Trello Clone</a>
+<nav class="navbar navbar-default group" role="navigation">
+  <div class="navbar-left">
+    <a class="nav-bar-boards nav-accent-blue" href="#"><i class="material-icons board-icon">border_all</i><strong class="board-icon-text">Boards</strong></a>
   </div>
 
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-right">
+  <div class="navbar-right">
+    <ul class="navbar-right-items">
     <% if signed_in? %>
-      <li id='add-dropdown' class='dropdown'>
-        <button
-          class='dropdown-toggle navbar-btn btn btn-primary'
-          data-toggle='dropdown'><span class='glyphicon glyphicon-plus'></span>
-        </button>
-      </li>
       <li><%= button_to "Sign out", session_url, method: :delete, class: "btn btn-primary navbar-btn" %></li>
     <% else %>
       <li><%= link_to "Log in", new_session_url %></li>
@@ -26,7 +13,6 @@
     <% end %>
     </ul>
   </div>
-</div>
 </nav>
 
 <% if flash[:errors] %>

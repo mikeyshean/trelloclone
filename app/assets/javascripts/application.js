@@ -16,7 +16,7 @@
 //= require underscore
 //= require backbone
 //= require serializeJSON
-//= require bootstrap
+//= require jquery-ui
 //= require trello_clone
 //= require underscore
 //= require backbone
